@@ -60,7 +60,7 @@
         </p>
         <div class="_flex_h">
           <router-link class="-btn black" to="/contact">CONTACT</router-link>
-          <router-link class="-btn black" to="/contact">ABOUT</router-link>
+          <router-link class="-btn black" to="/about">ABOUT</router-link>
         </div>
       </div>
       <div class="-img-wrapper"></div>
