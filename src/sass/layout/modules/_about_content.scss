@@ -1,0 +1,80 @@
+._about-content{
+  ._wrapper.-title {
+    min-height: 58vh;
+    background-color: #fff8f1;
+  }
+  ._col {
+    padding: 1em 0;
+    z-index: 10;
+    position: relative;
+    background-color: rgba($bg-color, 0.9695);
+  }
+  ._img-bg {
+    background-position: 50% 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+  }
+  ._col-content {
+    height: 100vh;
+    position: relative;
+    z-index: 10;
+    backface-visibility: hidden;
+    max-width: 1600px;
+    margin: 0 auto;
+    @include flex-direction(column-reverse)
+  }
+
+  ._col-img {
+    width: 100%;
+    flex: 1;
+    height: 50%;
+    overflow: hidden;
+  }
+
+  ._col-copy {
+    flex: 1;
+    padding: 1em 0em;
+    text-align: center;
+    ._wrapper{
+      background-color: $bg-color;
+      border-radius: 15px;
+      max-width: 80%;
+      padding: 0 1em;
+    }
+    h1{
+      font-family: $title;
+    }
+    p, h1 {
+      margin: 0;
+    }
+    p{
+      margin-top: 1em;
+    }
+  }
+
+  @include bp(phone, landscape) {
+    ._img-bg {
+      background-size: cover;
+    }
+
+    ._col-img {
+      height: 100%;
+    }
+    ._col-content {
+      height: 50vh;
+      min-height: 400px;
+      @include display-flex(0, center)
+    }
+    ._flex_reverse {
+      @include flex-direction(row-reverse);
+
+    }
+  }
+  @include bp(tablet, portrait) {
+    ._img-bg {
+      background-size: cover;
+    }
+  }
+}
+

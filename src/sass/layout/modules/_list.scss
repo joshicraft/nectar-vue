@@ -1,0 +1,25 @@
+._list {
+  @include flex-box;
+
+  ._l-header {
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(center);
+    padding: 0.5em;
+  }
+  ._l-h-title {
+    @include align-items(center);
+    @include justify-content(center);
+  }
+  ._l-row {
+    @include flex-direction(row);
+  }
+  ._l-col {
+    @include align-items(center);
+    @include justify-content(center);
+    padding: 0.5em;
+  }
+  ._l-p {
+
+  }
+}

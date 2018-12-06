@@ -1,0 +1,94 @@
+#index, #landing-stock {
+
+  ._title {
+    max-width: 798px;
+    h1, p {
+      //background: #f6f6f68f;
+    }
+  }
+  .-scroll-arrow {
+    @include invisible;
+    width: 1.8em;
+
+  }
+
+  .logo {
+    max-width: 77vw;
+    max-height: 65vh;
+    height: 80vh;
+    min-height: 260px;
+    width: 90%;
+    min-width: 77vw;
+    margin: -2.5em 0 0 0;
+    .-btn {
+      @include invisible;
+      margin-top: 2.3em;
+    }
+  }
+
+  .-img-wrapper {
+    position: absolute;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    max-width: 700px;
+    max-height: 550px;
+
+    height: 80%;
+    z-index: -10;
+    opacity: 0.14;
+    min-width: 320px;
+    background-size: cover;
+    background-image: url(/static/images/bottles.jpg);
+  }
+
+  @include bp(phone, landscape, min) {
+    .logo {
+      min-height: 228px;
+      height: 68vh;
+    }
+    .-btn {
+      font-size: 0.755em;
+    }
+  }
+
+  @include bp(phone, landscape) {
+    .logo {
+      max-width: 1000px;
+      max-height: 90vh;
+    }
+
+  }
+  @include bp(phablet, portrait) {
+    .-img-wrapper {
+      max-height: 80vh;
+    }
+  }
+  @include bp(tablet) {
+    .-img-wrapper {
+      max-height: 84vh;
+      max-width: 900px;
+    }
+  }
+  @include bp(laptop) {
+    .logo {
+      max-height: 650px;
+      height: 50vh;
+    }
+    .-img-wrapper {
+      max-height: 1000px;
+      height: 95%;
+      width: 780px;
+    }
+  }
+}
+
+#landing-stock {
+  ._title{
+    .-btn, h1, p{
+      //@include invisible
+    }
+  }
+}
+
+

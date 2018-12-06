@@ -1,0 +1,195 @@
+// Variables
+
+// Default font size
+// Because this is so important in many of your calculations as a context,
+// keep your default font size stored as a variable.
+
+$default-font-size: 16px !default;
+
+
+@mixin responsive($breakpoint, $media: all) {
+  @media only #{$media} and ($breakpoint) {
+    @content;
+  }
+}
+
+@function calc_bp($value) {
+  @return $value;
+  /// 16px * 1em;
+}
+
+
+/*
+  The following is created by Josh Scorrar, could interpret ems.
+  Use : meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no)
+  In the meta tags to ensure it works.
+  Follows mobile first approach by using 'min' properties.
+
+*/
+@mixin bp($breakpoint, $orientation: 0, $min-max: 'min') {
+  // Change these values as required
+
+  $sizes: (
+          phone: (
+                  portrait: calc_bp(320px),
+                  landscape: calc_bp(568px)
+          ),
+          phablet: (
+                  portrait: calc_bp(380px),
+                  landscape: calc_bp(730px)
+          ),
+          tablet: (
+                  portrait: calc_bp(768px),
+                  landscape: calc_bp(1024px)
+          ),
+          laptop: (
+                  landscape: calc_bp(1280px)
+          ),
+          desktop: (
+                  landscape: calc_bp(1600px)
+          )
+  );
+
+  @if ($breakpoint == phone) {
+    //$min-max: max;
+  }
+  $bp: map-get($sizes, $breakpoint);
+  $media: '';
+  @if ($orientation != 0) {
+    $media: "all and (orientation: #{$orientation}) and (#{$min-max}-width: #{map-get($bp, $orientation)})";
+  } @else {
+    @if ($breakpoint == laptop or $breakpoint == desktop) {
+      $media: all and (#{$min-max}-width: map-get($bp, landscape));
+    } @else {
+      $media: "all and (orientation: portrait) and (#{$min-max}-width: #{map-get($bp, portrait)}), only all and (orientation: landscape) and (#{$min-max}-width: #{map-get($bp, landscape)}),
+        all and (orientation: portrait) and (#{$min-max}-width: #{map-get($bp, landscape)}), only all and (orientation: landscape) and (#{$min-max}-width: #{map-get($bp, portrait)})"
+    }
+  }
+  //@debug $media $breakpoint;
+  @media only #{$media} {
+    @content;
+  }
+}
+
+
+.re-size {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-size: 40px;
+  text-align: center;
+  font-family: "Arial", "Helvetica", sans-serif;
+  content: 'phone';
+  &::after {
+    @include bp(phone) {
+      content: 'phone';
+    }
+    @include bp(phablet) {
+      content: 'phablet';
+    }
+    @include bp(tablet) {
+      content: 'tablet';
+    }
+    @include bp(laptop) {
+      content: 'laptop';
+    }
+    @include bp(desktop) {
+      content: 'desktop';
+    }
+  }
+}
+
+@mixin hidpi($media: all) {
+  @media only #{$media} and (min--moz-device-pixel-ratio: 1.5),
+  only #{$media} and (-o-min-device-pixel-ratio: 3/2),
+  only #{$media} and (-webkit-min-device-pixel-ratio: 1.5),
+  only #{$media} and (min-device-pixel-ratio: 1.5),
+  only #{$media} and (min-resolution: 144dpi),
+  only #{$media} and (min-resolution: 1.5dppx) {
+
+    @content;
+  }
+}
+
+// and just because the term "retina" is so widely used, we'll create
+// a mixin that uses that as an alias
+@mixin retina($media: all) {
+  @include hidpi($media) {
+    @content;
+  }
+}
+
+// rem: Calculate the rem unit, and return both pixels and rems
+// to support older (non-rem supporting) browsers
+@mixin rem($property, $value, $context: $default-font-size) {
+  #{$property}: $value;
+  #{$property}: cr($value, $context);
+}
+
+// Since the most common application of this is likely to be
+// with font-size, I've created a special mixin just for that
+// which will save you a whopping **5 characters** per time you
+// have to type it. Productivity FTW!
+@mixin font-size($font-size) {
+  @include rem(font-size, $font-size);
+}
+
+// Functions
+
+// calc-rem: calculate the rem value based on the desired pixel
+// value versus a context value, usually the default font size
+$default-font-size: 16px !default;
+
+@function calc-rem($target, $context: $default-font-size) {
+  @return $target / $context * 1rem;
+}
+
+// Shorthand redeclaration of the above
+@function cr($target, $context: $default-font-size) {
+  @return calc-rem($target, $context);
+}
+
+// calc-percent: calculate the percent using the target ÷ context
+// formula, expressed as a percentage.  See Chapter 2 of "Responsive
+// Web Design" (Marcotte, A Book Apart, 2011)
+@function calc-percent($target, $context) {
+  @return percentage($target / $context);
+}
+
+// Shorthand redeclaration of the above
+@function cp($target, $context) {
+  @return calc-percent($target, $context);
+}
+
+// calc-em: sometimes, you really need to use ems, not rems,
+// esp. when you're dealing with fonts that should be sized
+// relative to other items in a component, such as headers.
+// Remember to define your context!  Your context will be
+// the font-size of the parent element.
+
+@function calc-em($target, $context) {
+  @return $target / $context * 1em;
+}
+
+// Shorthand redeclaration of the above
+
+@function ce($target, $context) {
+  @return calc-em($target, $context);
+}
+
+// hidpi-sprite-adjustment
+// when using Sass & Compass to generate sprites, there are issues with calculating the
+// position of the HiDPI sprites. See http://blog.teamtreehouse.com/?p=20925 (I'll update
+// this documentation when I get a chance to later.)  this function makes the necessary
+// adjustment for you.
+@function hidpi-sprite-adjustment($sprite-map, $sprite) {
+  @return round(nth(sprite-position($sprite-map, $sprite), 2) / 2);
+}
+
+// retina-sprite-adjustment
+// prefer the term "retina" over "hidpi"? here you go, this aliases the previous function
+@function retina-sprite-adjustment($sprite-map, $sprite) {
+  @return hidpi-sprite-adjustment($sprite-map, $sprite);
+}

@@ -1,0 +1,21 @@
+header{
+  position: fixed;
+  z-index: 100;
+  top:0;
+  right: 0.3em;
+  .menu-icons{
+    position: relative;
+  }
+  .menu-icon{
+
+  }
+  .-menu-icon{
+    margin: 0.5rem;
+  }
+  .-menu-icon{
+    @include invisible;
+    position: relative;
+    left: 100%;
+    top: 0;
+  }
+}

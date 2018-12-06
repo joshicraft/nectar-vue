@@ -1,0 +1,85 @@
+#about {
+
+  /*
+    About Template:
+  */
+
+
+  .-svg-label-f {
+    height: 100%;
+    max-width: 95vw;
+    left: 0;
+    right: 0;
+    top: 5%;
+    margin: auto;
+    display: block;
+    position: fixed;
+    @include invisible;
+  }
+  ._col-item {
+    @include invisible;
+  }
+
+
+  /*
+    Special:
+  */
+
+  .Tea {
+    padding-top: 0;
+  }
+  .Bottle {
+    ._img-bg {
+      background-size: 100%;
+      width: 100vw;
+      background-position: 0% -10%;
+      @include invisible;
+    }
+  }
+  .Nectar {
+    padding-bottom: 0;
+    ._col-img {
+      text-align: center;
+    }
+    svg {
+      height: 200%;
+      max-width: 95%;
+    }
+  }
+
+  /*
+    Media Queries:
+  */
+
+  @include bp(phone, landscape) {
+    .Bottle {
+      ._img-bg {
+        background-size: 90%;
+        width: 80vw;
+        background-position: -10vw 0%;
+      }
+    }
+  }
+  @include bp(laptop) {
+    .Bottle {
+      ._img-bg {
+        background-size: 60%;
+        width: 150%;
+        background-position: 0 0;
+
+      }
+      ._col-img {
+        flex: 1.5;
+      }
+    }
+  }
+}
+
+
+section::before {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    z-index: 10;
+}

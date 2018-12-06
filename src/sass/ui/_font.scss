@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'Nexa_Free_Bold';
+    src: url('/static/fonts/Nexa_Free_Bold-webfont.woff2') format('woff2'),
+         url('/static/fonts/Nexa_Free_Bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  font-display: block;
+
+}
+
+@font-face {
+    font-family: 'Nexa_Free_Light';
+    src: url('/static/fonts/Nexa_Free_Light-webfont.woff2') format('woff2'),
+         url('/static/fonts/Nexa_Free_Light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  font-display: block;
+
+}
+
+$title: "Nexa_Free_Bold", "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+$first-font: "Nexa_Free_Light", "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+
+
+/* unvisited link */
+a.new-a:link {
+    color: white;
+}
+
+/* visited link */
+a.new-a:visited {
+    color: white;
+}
+
+/* mouse over link */
+a.new-a:hover {
+    color: gray;
+}
+
+/* selected link */
+a.new-a:active {
+    color: white;
+}

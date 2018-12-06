@@ -1,0 +1,150 @@
+@mixin prefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+
+    // Output standard non-prefixed declaration
+    #{$property}: $value;
+  }
+}
+
+@mixin transform($transforms) {
+	   -moz-transform: $transforms;
+	     -o-transform: $transforms;
+	    -ms-transform: $transforms;
+	-webkit-transform: $transforms;
+          transform: $transforms;
+}
+
+@mixin transition-transform($duration, $timing, $delay:0s, $preface:webkit moz ms o spec){
+  @each $browser in $preface {
+    @if( $browser == spec) {
+      transition: transform $duration $timing $delay;
+    } @else {
+      -#{$browser}-transition: -#{$browser}-transform $duration $timing $delay;
+    }
+  }
+}
+
+@mixin transition($transition...) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+@mixin transition-property($property...) {
+  -moz-transition-property: $property;
+  -o-transition-property: $property;
+  -webkit-transition-property: $property;
+  transition-property: $property;
+}
+
+@mixin transition-duration($duration...) {
+  -moz-transition-property: $duration;
+  -o-transition-property: $duration;
+  -webkit-transition-property: $duration;
+  transition-property: $duration;
+}
+
+@mixin transition-timing-function($timing...) {
+  -moz-transition-timing-function: $timing;
+  -o-transition-timing-function: $timing;
+  -webkit-transition-timing-function: $timing;
+  transition-timing-function: $timing;
+}
+
+@mixin transition-delay($delay...) {
+  -moz-transition-delay: $delay;
+  -o-transition-delay: $delay;
+  -webkit-transition-delay: $delay;
+  transition-delay: $delay;
+}
+
+@mixin animation ($animation, $duration, $transition, $iteration) {
+  -webkit-animation-name: $animation;
+  -webkit-animation-duration: $duration;
+  -webkit-animation-timing-function: $transition;
+  -webkit-animation-iteration-count: $iteration;
+  -moz-animation-name: $animation;
+  -moz-animation-duration: $duration;
+  -moz-animation-timing-function: $transition;
+  -moz-animation-iteration-count: $iteration;
+  -o-animation-name: $animation;
+  -o-animation-duration: $duration;
+  -o-animation-timing-function: $transition;
+  -o-animation-iteration-count: $iteration;
+  animation-name: $animation;
+  animation-duration: $duration;
+  animation-timing-function: $transition;
+  animation-iteration-count: $iteration;
+}
+
+@mixin keyframe ($animation_name) {
+    @-webkit-keyframes #{$animation_name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animation_name} {
+        @content;
+    }
+
+    @-o-keyframes #{$animation_name} {
+        @content;
+    }
+
+    @keyframes #{$animation_name} {
+        @content;
+    }
+}
+
+@mixin visible() {
+  visibility: visible;
+  opacity: 1;
+}
+
+@mixin invisible() {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@mixin size($size, $pre: 0) {
+  $height: nth($size, 1);
+  $width: $height;
+
+  @if length($size) > 1 {
+    @if $pre != 0 {
+      #{$pre+'-height'}: nth($size, 2);
+    } @else {
+      height: nth($size, 2);;
+    }
+  }
+
+  @if $height == auto or (type-of($height) == number and not unitless($height)) {
+    @if $pre != 0 {
+      #{$pre+'-height'}: $height
+    } @else {
+      height: $height;
+    }
+  }
+
+  @if $width == auto or (type-of($width) == number and not unitless($width)) {
+    @if $pre != 0 {
+      #{$pre+'-width'}: $width
+    } @else {
+      width: $width;
+    }
+  }
+}
+
+@mixin display-flex($vertical: 0, $horizontal: 0, $direction: row) {
+  @include flex-box;
+  @if ($vertical != 0) {
+    @include align-items($vertical);
+  }
+  @if ($horizontal != 0) {
+    @include justify-content($horizontal);
+  }
+  @include flex-direction($direction)
+}

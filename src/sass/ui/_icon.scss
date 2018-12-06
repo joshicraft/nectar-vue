@@ -1,0 +1,98 @@
+$menu-icon-width: 1.8em;
+
+.-menu-icon {
+  @include size($menu-icon-width);
+  @include invisible;
+  cursor: pointer;
+  display: block;
+  path {
+    stroke-width: 10;
+    stroke: black;
+    @include transition(fill 0.27s, stroke 0.27s)
+  }
+  .-icon-name {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    left: 0;
+    bottom: 0;
+  }
+  p {
+    margin: 0;
+    text-decoration: none;
+    color: #a08138;
+    border-radius: 4px;
+    padding: 0.25em 0.5em;
+    font-size: 0.8em;
+    background-color: #000000bf;
+
+  }
+  &:hover {
+    path {
+      fill: transparent;
+      stroke: #5a5a5a;
+    }
+  }
+}
+
+#home-button{
+  position: fixed;
+  top:0;
+  left:0;
+  margin: 0.5rem;
+  z-index: 200;
+  cursor: pointer;
+  svg{
+    @include size($menu-icon-width);
+  }
+  &:hover{
+    svg{
+      polygon, circle, path{
+        fill: whitesmoke;
+        stroke: black;
+        stroke-width: 3px;
+      }
+    }
+  }
+}
+
+.-gear-icon {
+  width: 4em;
+  height: 4em;
+  margin: 0 auto 2em auto;
+  @include animation(spin, 2s, ease-out, infinite);
+  path {
+    stroke: white;
+    fill: wheat;
+  }
+}
+
+.-error-404-icon {
+  width: 7em;
+  height: 7em;
+  margin: 0 auto 2em auto;
+  circle {
+    stroke: red;
+    fill: red;
+    @include animation(scale-up, 1s, ease-out, infinite);
+  }
+}
+
+@include keyframe(scale-up) {
+  50% {
+    stroke: green;
+    fill: green;
+  }
+
+  100% {
+    stroke: red;
+    fill: red;
+  }
+}
+
+@include keyframe(spin) {
+  100% {
+    @include transform(rotate(360deg));
+  }
+}
+
