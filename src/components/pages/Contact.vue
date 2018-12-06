@@ -126,8 +126,13 @@
             body: data
           }).then(response => {
             resolve(response)
+            this.animate_contact_end($form, true)
           }).catch(err => {
             reject(err)
+            this.animate_contact_end($form, false)
+            $('.form-legend').text('Darn... There seem\'s to be some funky technical issues, ' +
+              'feel free to try again or contact us directly via Email or Phone')
+              .addClass('__error')
           })
         })
         // $.ajax({
