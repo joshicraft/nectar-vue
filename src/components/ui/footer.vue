@@ -10,14 +10,14 @@
         </div>
       </div>
       <div class="-social-media-list _flex_h _footer-item">
-        <div><a class="-menu-icon contact-icon" href="/contact">
+        <div><router-link class="-menu-icon contact-icon" to="/contact">
           <svg viewBox="0 0 512 512">
             <path class="-svg-outer-line" display="inline"
                   d="M508.749,473.75c0,19.25-15.75,35-35,35H38.25c-19.25,0-35-15.75-35-35V38.25c0-19.25,15.75-35,35-35   h435.499c19.25,0,35,15.75,35,35V473.75z"></path>
             <path fill="#FFFFFF"
                   d="M358.083,295.5c-28.916,28.917-28.916,57.833-57.833,57.833s-57.833-28.916-86.75-57.833  c-28.917-28.916-57.833-57.833-57.833-86.75s28.917-28.917,57.833-57.833C242.417,122,155.667,35.25,126.75,35.25S40,122,40,122  c0,57.833,59.409,175.076,115.667,231.333C211.924,409.591,329.167,469,387,469c0,0,86.75-57.833,86.75-86.75  S387,266.584,358.083,295.5z"></path>
           </svg>
-        </a></div>
+        </router-link></div>
         <div><a class="-menu-icon facebook-icon" href="https://www.facebook.com/Nectar-Beverages-186910505238446/">
           <svg viewBox="0 0 512 512">
             <path class="-svg-outer-line" display="inline"
@@ -43,8 +43,8 @@
       </div>
       <div class="-footer-extras _footer-item">
         <div class="extra">© 2018 Nectar Beverages LTD</div>
-        <a class="new-a extra" href="/privacy-policy">•&nbsp;&nbsp; Privacy Policy</a><a class="new-a extra"
-                                                                                         href="/privacy-policy">•&nbsp;&nbsp;
+        <router-link class="new-a extra" href="/privacy-policy">•&nbsp;&nbsp; Privacy Policy</router-link><a class="new-a extra"
+                                                                                         to="/privacy-policy">•&nbsp;&nbsp;
         Terms and Conditions</a></div>
     </div>
   </footer>

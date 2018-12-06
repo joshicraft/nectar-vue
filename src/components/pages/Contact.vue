@@ -25,7 +25,9 @@
       </div>
       <form class="cmxform" id="commentForm" action="" target="frame">
         <div class="-cover _flex_v_h"><h3>Your order has been submitted</h3>
-          <p>Check out more about Nectar</p><a class="-btn" href="/about">About Nectar</a></div>
+          <p>Check out more about Nectar</p>
+          <router-link class="-btn" to="/about">About Nectar</router-link>
+        </div>
         <fieldset>
           <div class="form-legend">Enter your contact details below and we'll can back in touch with you. Other-wise get
             in touch with us via phone or email.
