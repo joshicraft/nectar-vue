@@ -96,8 +96,8 @@
     },
     methods: {
       scroll_down () {
-        this.clickSound.play()
         this.auto_scroll_index(true)
+        this.clickSound.play()
       },
       check_scrolled () {
         if (!this.index_auto_scrolled) {
