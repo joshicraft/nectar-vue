@@ -40,7 +40,7 @@
           <p><label for="phone">E-Mail:<span>(required)</span></label><input id="email-input" type="email" name="email"
                                                                              required=""></p>
           <p><label for="email">Phone:</label><input id="phone-input" type="phone" name="phone"></p>
-          <p><label for="subject">Your order:<span>(required)</span></label><textarea id="subject-input" name="subject"
+          <p><label for="message">Your order:<span>(required)</span></label><textarea id="message-input" name="message"
                                                                                       required=""></textarea></p>
           <p><input class="-btn btn" id="send" type="submit" value="Send" @click="click_send"></p></fieldset>
       </form>
@@ -67,7 +67,7 @@
       click_send (e) {
         e.preventDefault()
         let $form = $('form'),
-          subject = $('#subject-input').val(),
+          message = $('#message-input').val(),
           name = $('#name-input').val(),
           phone = $('#phone-input').val(),
           email = $('#email-input').val()
@@ -79,7 +79,7 @@
             'phone': phone,
             'email': email,
             'name': name,
-            'subject': subject
+            'message': message
           }
           this.animate_contact_logo($form)
           this.contact_ajax(data, $form)
@@ -119,7 +119,6 @@
           }, '-=' + (dur / 1.5))
       },
       contact_ajax (data, $form) {
-        // let api = process.env.NODE_ENV === 'development' ? 'http://localhost:9000' : '/.netlify/functions'
         data = JSON.stringify(data)
         return new Promise((resolve, reject) => {
           let api = process.env.NODE_ENV === 'development' ? 'http://localhost:9000' : '/.netlify/functions'
@@ -137,20 +136,6 @@
               .addClass('__error')
           })
         })
-        // $.ajax({
-        //   type: 'POST',
-        //   url: api + '/contact-sendgrid',
-        //   data: {body: data},
-        //   contentType: 'application/json',
-        //   dataType: 'jsonp'
-        // }).done(() => {
-        //   this.animate_contact_end($form, true)
-        // }).fail(() => {
-        //   this.animate_contact_end($form, false)
-        //   $('.form-legend').text('Darn... There seem\'s to be some funky technical issues, ' +
-        //     'feel free to try again or contact us directly via Email or Phone')
-        //     .addClass('__error')
-        // })
       }
     }
   }
