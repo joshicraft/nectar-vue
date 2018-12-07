@@ -86,7 +86,6 @@
       ]
     },
     mounted () {
-      console.log('s')
       TweenMax.delayedCall(0.5, this.animate_logo)
       $(window).scrollTop(0)
       window.removeEventListener('scroll', this.check_scrolled)
@@ -106,7 +105,7 @@
           this.index_auto_scrolled = true
         }
       },
-      auto_scroll_index: function (click) {
+      auto_scroll_index (click) {
         let $footer = $('footer'),
           $btn = $('._title .-btn'),
           $riseFade = $('._title h1, ._title p, ._title .-btn')
@@ -116,7 +115,7 @@
         this.index_auto_scrolled = true
         new TimelineMax()
           .set($riseFade, {autoAlpha: 0})
-          .to(document.documentElement, 0.7, {
+          .to('window', 0.7, {
             scrollTo: {
               y: window.innerHeight
             }
