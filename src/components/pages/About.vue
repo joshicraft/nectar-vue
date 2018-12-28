@@ -595,7 +595,6 @@
             duration: window.innerHeight,
             // offset: 0,
             offset: -window.innerHeight / 2,
-            
             tween: (e) => {
               return new TimelineMax()
                 .fromTo(e, 1,
