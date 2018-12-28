@@ -115,7 +115,7 @@
         this.index_auto_scrolled = true
         new TimelineMax()
           .set($riseFade, {autoAlpha: 0})
-          .to('window', 0.7, {
+          .to(window, 0.7, {
             scrollTo: {
               y: window.innerHeight
             }
