@@ -120,6 +120,7 @@
               y: window.innerHeight
             }
           })
+
           .staggerFromTo($riseFade, 0.3, {y: 20, autoAlpha: 0}, {y: 0, autoAlpha: 1}, 0.2)
           .staggerTo($btn, 0.2,
             {
