@@ -630,7 +630,7 @@
           $svg_objs = $elm.find('path:not(.not), rect, polygon, circle, text'),
           dur = 1.2,
           $array = $svg_objs.toArray(),
-          t_l = new TimelineMax({delay: 1.5})
+          t_l = new TimelineMax({delay: .5})
 
         let $this = this
 
