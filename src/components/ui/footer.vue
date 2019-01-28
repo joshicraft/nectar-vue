@@ -3,7 +3,7 @@
     <div class="wrapper _flex">
       <div class="-contact-list _footer-item">
         <div>
-          <li><span>Phone:</span><span>&nbsp;+640212731902</span></li>
+          <li><span>Phone:</span><span>&nbsp;+640220351967</span></li>
         </div>
         <div>
           <li><span>Email:</span><span>&nbsp;support@nectarbeverages.co.nz</span></li>
@@ -42,10 +42,11 @@
         </a></div>
       </div>
       <div class="-footer-extras _footer-item">
-        <div class="extra">© 2018 Nectar Beverages LTD</div>
-        <router-link class="new-a extra" href="/privacy-policy">•&nbsp;&nbsp; Privacy Policy</router-link><a class="new-a extra"
-                                                                                         to="/privacy-policy">•&nbsp;&nbsp;
-        Terms and Conditions</a></div>
+        <div class="extra">© 2019 Nectar Beverages LTD</div>
+        <!--<router-link class="new-a extra" href="/privacy-policy">•&nbsp;&nbsp; Privacy Policy</router-link><a class="new-a extra"-->
+                                                                                         <!--to="/privacy-policy">•&nbsp;&nbsp;-->
+        <!--Terms and Conditions</a>-->
+      </div>
     </div>
   </footer>
 </template>
