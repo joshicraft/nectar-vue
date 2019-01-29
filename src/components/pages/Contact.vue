@@ -19,7 +19,7 @@
     <div class="_flex_v" id="container">
       <div class="contact-list">
         <div class="-contact-item"><span class="-contact-info">Phone</span><span
-          class="-contact-title">: +640212731902</span></div>
+          class="-contact-title">: +640220351967</span></div>
         <div class="-contact-item"><span class="-contact-info">Email</span><span class="-contact-title">: support@nectarbeverages.co.nz</span>
         </div>
       </div>
